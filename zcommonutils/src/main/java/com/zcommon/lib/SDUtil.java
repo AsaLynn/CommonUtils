@@ -2,6 +2,8 @@ package com.zcommon.lib;
 
 import android.os.Environment;
 
+import java.io.File;
+
 /**
  * Created by zxn on 2019/2/27.
  */
@@ -15,4 +17,14 @@ public class SDUtil {
     public static String getSDRoot() {
         return Environment.getExternalStorageDirectory().getAbsolutePath();
     }
+
+    /**
+     * 获取指定目录在sd卡的路径.
+     *
+     * @return 目录d卡的完整路径.
+     */
+    public static String getPathOnSD(String pathName) {
+        return getSDRoot() + File.separator + pathName;
+    }
+
 }

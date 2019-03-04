@@ -1058,7 +1058,7 @@ public class SystemUtils {
      * @param spValue 值
      * @return 转换后px值.
      */
-    public float sp2px(Context context, float spValue) {
+    public static float sp2px(Context context, float spValue) {
         final float scale = context.getResources().getDisplayMetrics().scaledDensity;
         return spValue * scale;
     }

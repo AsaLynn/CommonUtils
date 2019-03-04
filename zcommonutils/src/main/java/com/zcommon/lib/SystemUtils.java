@@ -56,7 +56,7 @@ public class SystemUtils {
     /**
      * 隐藏系统键盘
      *
-     * @param activity  activity
+     * @param activity activity
      */
     public static void hideKeyboardFromActivity(Activity activity) {
         InputMethodManager inputManager = (InputMethodManager) activity
@@ -206,7 +206,7 @@ public class SystemUtils {
      * if the external storage device which is emulated, that mean the devices
      * does not have real external storage ,result includes that devices.
      *
-     * @return  long
+     * @return long
      */
     public static long getAvailableExternalStorage() {
         try {
@@ -381,9 +381,8 @@ public class SystemUtils {
     }
 
     /**
-     *
-     * @param context   context
-     * @return  cache dir. Can be null is external storage is unmounted
+     * @param context context
+     * @return cache dir. Can be null is external storage is unmounted
      */
     @TargetApi(Build.VERSION_CODES.FROYO)
     public static File getDeviceExternalCacheDir(Context context) {
@@ -422,7 +421,7 @@ public class SystemUtils {
     /**
      * get user config locale, if null, return default locale.
      *
-     * @param context   context
+     * @param context context
      * @return locale
      */
     public static Locale getLocale(Context context) {
@@ -443,7 +442,7 @@ public class SystemUtils {
     /**
      * get android id, use content provider, don't use this method on main thread.
      *
-     * @param context   context
+     * @param context context
      * @return android id
      */
     public static String getAndroidId(Context context) {
@@ -546,7 +545,7 @@ public class SystemUtils {
     /**
      * 判断某个服务是否正在运行的方法
      *
-     * @param mContext  mContext
+     * @param mContext    mContext
      * @param serviceName 是包名+服务的类名（例如：net.loonggg.testbackstage.TestService）
      * @return true代表正在运行，false代表服务没有正在运行
      */
@@ -754,9 +753,9 @@ public class SystemUtils {
     }
 
     /**
-     * @param context   context
-     * @param px    context
-     * @return  context
+     * @param context context
+     * @param px      context
+     * @return context
      */
     public static float px2dp(final Context context, final float px) {
         return px / context.getResources().getDisplayMetrics().density;
@@ -1050,6 +1049,18 @@ public class SystemUtils {
             }
         }
         return null;
+    }
+
+    /**
+     * sp转为px
+     *
+     * @param context 上下文
+     * @param spValue 值
+     * @return 转换后px值.
+     */
+    public float sp2px(Context context, float spValue) {
+        final float scale = context.getResources().getDisplayMetrics().scaledDensity;
+        return spValue * scale;
     }
 
 }

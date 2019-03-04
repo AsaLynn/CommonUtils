@@ -16,9 +16,9 @@ public class SystemSPUtil {
     /**
      * 保存数据到文件
      *
-     * @param context
-     * @param key
-     * @param data
+     * @param context   context
+     * @param key   context
+     * @param data  context
      */
     public static void saveData(Context context, String key, Object data) {
         try {
@@ -48,10 +48,10 @@ public class SystemSPUtil {
     /**
      * 从文件中读取数据
      *
-     * @param context
-     * @param key
-     * @param defValue
-     * @return
+     * @param context   context
+     * @param key   context
+     * @param defValue  context
+     * @return  context
      */
     public static Object getData(Context context, String key, Object defValue) {
         try {
@@ -82,9 +82,9 @@ public class SystemSPUtil {
      * 初始化数据到文件
      * 有就跳过，没有就新增
      *
-     * @param context
-     * @param key
-     * @param data
+     * @param context   context
+     * @param key   context
+     * @param data  context
      */
     public static void initialData(Context context, String key, Object data) {
         try {

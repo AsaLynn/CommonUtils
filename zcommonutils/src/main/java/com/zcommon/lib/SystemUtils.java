@@ -56,7 +56,7 @@ public class SystemUtils {
     /**
      * 隐藏系统键盘
      *
-     * @param activity
+     * @param activity  activity
      */
     public static void hideKeyboardFromActivity(Activity activity) {
         InputMethodManager inputManager = (InputMethodManager) activity
@@ -206,7 +206,7 @@ public class SystemUtils {
      * if the external storage device which is emulated, that mean the devices
      * does not have real external storage ,result includes that devices.
      *
-     * @return
+     * @return  long
      */
     public static long getAvailableExternalStorage() {
         try {
@@ -381,9 +381,9 @@ public class SystemUtils {
     }
 
     /**
-     * Gets external cache dir.
      *
-     * @return cache dir. Can be null is external storage is unmounted
+     * @param context   context
+     * @return  cache dir. Can be null is external storage is unmounted
      */
     @TargetApi(Build.VERSION_CODES.FROYO)
     public static File getDeviceExternalCacheDir(Context context) {
@@ -422,7 +422,7 @@ public class SystemUtils {
     /**
      * get user config locale, if null, return default locale.
      *
-     * @param context
+     * @param context   context
      * @return locale
      */
     public static Locale getLocale(Context context) {
@@ -443,7 +443,7 @@ public class SystemUtils {
     /**
      * get android id, use content provider, don't use this method on main thread.
      *
-     * @param context
+     * @param context   context
      * @return android id
      */
     public static String getAndroidId(Context context) {
@@ -546,7 +546,7 @@ public class SystemUtils {
     /**
      * 判断某个服务是否正在运行的方法
      *
-     * @param mContext
+     * @param mContext  mContext
      * @param serviceName 是包名+服务的类名（例如：net.loonggg.testbackstage.TestService）
      * @return true代表正在运行，false代表服务没有正在运行
      */
@@ -643,8 +643,6 @@ public class SystemUtils {
      * check if the mobile has been rooted
      *
      * @return the mobile has been rooted
-     * @throws IOException
-     * @author TQS
      */
     public static boolean isRooted() {
         boolean rooted = false;
@@ -756,18 +754,18 @@ public class SystemUtils {
     }
 
     /**
-     * @param context
-     * @param px
-     * @return
+     * @param context   context
+     * @param px    context
+     * @return  context
      */
     public static float px2dp(final Context context, final float px) {
         return px / context.getResources().getDisplayMetrics().density;
     }
 
     /**
-     * @param context
-     * @param dp
-     * @return
+     * @param context context
+     * @param dp      dp
+     * @return float
      */
     public static float dp2px(final Context context, final float dp) {
         return dp * context.getResources().getDisplayMetrics().density;
@@ -776,8 +774,8 @@ public class SystemUtils {
     /**
      * get current process name
      *
-     * @param context
-     * @return
+     * @param context context
+     * @return process name
      */
     public static String getProcessName(Context context) {
         int myPid = android.os.Process.myPid();
@@ -910,8 +908,8 @@ public class SystemUtils {
     /**
      * 通过域名获取ip地址
      *
-     * @param host
-     * @return
+     * @param host 域名
+     * @return 获取ip地址
      */
     public static String getHostAddress(String host) {
         String IPAddress = "";
@@ -959,7 +957,7 @@ public class SystemUtils {
     /**
      * 获取系统版本号
      *
-     * @return
+     * @return 系统版本号
      */
     public static String getMobileSysVersion() {
         String sysVertion = Build.VERSION.RELEASE;
@@ -969,7 +967,7 @@ public class SystemUtils {
     /**
      * 获取手机型号
      *
-     * @return
+     * @return String
      */
     public static String getMobileModel() {
         try {
@@ -983,8 +981,6 @@ public class SystemUtils {
 
     /**
      * 判断手机root
-     *
-     * @return
      */
     public static void isRoot() {
         String binPath = "/system/bin/su";
@@ -1040,8 +1036,8 @@ public class SystemUtils {
     /**
      * 获取当前进程的packagename
      *
-     * @param context
-     * @return
+     * @param context context
+     * @return 进程的报名
      */
     public static String getCurProcessName(Context context) {
         int pid = android.os.Process.myPid();

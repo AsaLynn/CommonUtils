@@ -5,7 +5,9 @@ import android.support.annotation.ColorRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.Toast;
 
 /**
  * 系统UI操作工具类
@@ -121,6 +123,11 @@ public class UIUtils {
         return str == null || str.length() == 0 || str.toString().trim().length() == 0;
     }
 
+    public static void toast(String msg) {
+        isNull();
+        ZToastUtils.init(mContext);
+        ZToastUtils.toast(msg);
+    }
 
     //-------------------------一下方法为内部使用-----------------------------
 

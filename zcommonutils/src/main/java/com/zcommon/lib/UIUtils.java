@@ -2,6 +2,7 @@ package com.zcommon.lib;
 
 import android.content.Context;
 import android.support.annotation.ColorRes;
+import android.support.annotation.StringRes;
 import android.view.View;
 
 /**
@@ -63,6 +64,36 @@ public class UIUtils {
      */
     public static Context getContext() {
         return mContext;
+    }
+
+    /**
+     * Returns a localized formatted string from the application's package's
+     * default string table, substituting the format arguments as defined in
+     * {@link java.util.Formatter} and {@link java.lang.String#format}.
+     *
+     * @param resId      Resource id for the format string
+     * @param formatArgs The format arguments that will be used for
+     *                   substitution.
+     * @return The string data associated with the resource, formatted and
+     * stripped of styled text information.
+     */
+    public static String getString(@StringRes int resId, Object... formatArgs) {
+        isNull();
+        //getString(@StringRes int resId, Object... formatArgs)
+        return mContext.getString(resId, formatArgs);
+    }
+
+    /**
+     * Returns a localized string from the application's package's
+     * default string table.
+     *
+     * @param resId Resource id for the string
+     * @return The string data associated with the resource, stripped of styled
+     * text information.
+     */
+    public static String getString(@StringRes int resId) {
+        isNull();
+        return mContext.getString(resId);
     }
 
     //-------------------------一下方法为内部使用-----------------------------

@@ -97,5 +97,24 @@ public class ZToastUtils {
         return toast;
     }
 
+    /**
+     * 弹出吐司!
+     *
+     * @param msg 弹出内容.
+     */
+    public static void toast(String msg) {
+        if (mToast == null) {
+            mToast = Toast.makeText(mContext, msg, Toast.LENGTH_LONG);
+            mToast.setGravity(Gravity.CENTER, 0, 0);
+            mToast.show();
+        } else {
+            mToast.setText(msg);
+            mToast.show();
+        }
+
+    }
+
+    private static Toast mToast;
+
 
 }

@@ -2,7 +2,9 @@ package com.zcommon.lib;
 
 import android.content.Context;
 import android.support.annotation.ColorRes;
+import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.text.TextUtils;
 import android.view.View;
 
 /**
@@ -95,6 +97,30 @@ public class UIUtils {
         isNull();
         return mContext.getString(resId);
     }
+
+    /**
+     * 去除字符串空格
+     *
+     * @param text 要处理的字符串.
+     * @return 去除空格后的字符串.
+     */
+    public static String trim(String text) {
+        if (null == text) {
+            return "";
+        }
+        return text.trim();
+    }
+
+    /**
+     * Returns true if the string is null or 0-length or 含有空格视为空串.
+     *
+     * @param str the string to be examined
+     * @return true if str is null or zero length
+     */
+    public static boolean isEmpty(@Nullable CharSequence str) {
+        return str == null || str.length() == 0 || str.toString().trim().length() == 0;
+    }
+
 
     //-------------------------一下方法为内部使用-----------------------------
 

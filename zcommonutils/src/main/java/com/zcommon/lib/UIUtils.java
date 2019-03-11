@@ -1,8 +1,10 @@
 package com.zcommon.lib;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.Build;
 import android.support.annotation.ColorRes;
+import android.support.annotation.DimenRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.text.TextUtils;
@@ -164,15 +166,50 @@ public class UIUtils {
     /**
      * 获取屏幕宽度。
      *
-     * @param context 上下文。
      * @return 屏幕宽度
      */
-    public static int getScreenWidth(Context context) {
-        WindowManager wmManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+    public static int getScreenWidth() {
+        isNull();
+        WindowManager wmManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
         return getScreenWidth(wmManager);
     }
 
+    /**
+     * 获取dimes.xml中dimen的尺寸值，类似于方法
+     * {@link #getDimension}，不同的是返回值是int类型的值
+     *
+     * @param id 资源id。
+     * @return
+     * @see #getDimension
+     * @see #getDimensionPixelOffset
+     */
+    public static int getDimensionPixelSize(@DimenRes int id) {
+        isNull();
+        return mContext.getResources().getDimensionPixelSize(id);
+    }
 
+    /**
+     * 获取dimes.xml中dimen的尺寸值。
+     *
+     * @param id 资源id
+     * @return 返回float类型的尺寸值。
+     */
+    public static float getDimension(@DimenRes int id) {
+        isNull();
+        return mContext.getResources().getDimension(id);
+    }
+
+    /**
+     * 获取dimes.xml中dimen的尺寸值。类似于方法
+     * {@link #getDimension}，不同的是返回值是int类型的值
+     *
+     * @param id 资源id。
+     * @return 返回强转成int类型的值。
+     */
+    public int getDimensionPixelOffset(@DimenRes int id) {
+        isNull();
+        return mContext.getResources().getDimensionPixelOffset(id);
+    }
     //-------------------------一下方法为内部使用-----------------------------
 
     private static boolean aboveApiLevel(int sdkInt) {

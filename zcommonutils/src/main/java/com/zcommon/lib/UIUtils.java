@@ -1,12 +1,16 @@
 package com.zcommon.lib;
 
 import android.content.Context;
+import android.os.Build;
 import android.support.annotation.ColorRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 /**
@@ -129,7 +133,55 @@ public class UIUtils {
         ZToastUtils.toast(msg);
     }
 
+    /**
+     * 获取屏幕的宽度。
+     *
+     * @param windowManager 窗口管理者。
+     * @return
+     */
+    public static int getScreenWidth(WindowManager windowManager) {
+        int widthPixels = 0;
+        Display defaultDisplay = windowManager.getDefaultDisplay();
+        if (aboveApiLevel(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+                && !aboveApiLevel(Build.VERSION_CODES.JELLY_BEAN_MR1)) {
+            try {
+                widthPixels = (Integer) Display.class.getMethod("getRawWidth").invoke(defaultDisplay);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else if (aboveApiLevel(Build.VERSION_CODES.JELLY_BEAN_MR1)) {
+            android.graphics.Point realSize = new android.graphics.Point();
+            defaultDisplay.getRealSize(realSize);
+            widthPixels = realSize.x;
+        } else {
+            DisplayMetrics metrics = new DisplayMetrics();
+            defaultDisplay.getMetrics(metrics);
+            widthPixels = metrics.widthPixels;
+        }
+        return widthPixels;
+    }
+
+    /**
+     * 获取屏幕宽度。
+     *
+     * @param context 上下文。
+     * @return 屏幕宽度
+     */
+    public static int getScreenWidth(Context context) {
+        WindowManager wmManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        return getScreenWidth(wmManager);
+    }
+
+
     //-------------------------一下方法为内部使用-----------------------------
+
+    private static boolean aboveApiLevel(int sdkInt) {
+        return getApiLevel() >= sdkInt;
+    }
+
+    private static int getApiLevel() {
+        return Build.VERSION.SDK_INT;
+    }
 
     /**
      * mContext 是否为null.

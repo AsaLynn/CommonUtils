@@ -4,6 +4,8 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DimenRes;
 import android.support.annotation.Nullable;
@@ -160,6 +162,19 @@ public class UIUtils {
     public static int px2sp(final float pxValue) {
         isNull();
         return px2sp(mContext, pxValue);
+    }
+
+    /**
+     * Causes the Runnable r to be added to the message queue, to be run
+     * after the specified amount of time elapses.
+     *
+     * @param r The Runnable that will be executed.
+     * @param delayMillis   The delay (in milliseconds) until the Runnable will be executed.
+     * @return
+     */
+    public static boolean postDelayed(Runnable r, long delayMillis) {
+        Handler mHandler = new Handler(Looper.getMainLooper());
+        return mHandler.postDelayed(r, delayMillis);
     }
 
 //<<<-------------------------以下方法需初始化init----------------------------|

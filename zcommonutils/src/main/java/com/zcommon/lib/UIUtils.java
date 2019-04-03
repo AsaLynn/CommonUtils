@@ -123,10 +123,21 @@ public class UIUtils {
         return str == null || str.length() == 0 || str.toString().trim().length() == 0;
     }
 
+    /**
+     * 弹出吐司
+     *
+     * @param msg 吐司
+     */
     public static void toast(String msg) {
         isNull();
         ZToastUtils.init(mContext);
         ZToastUtils.toast(msg);
+    }
+
+    public static void toast(@StringRes int resId) {
+        isNull();
+        ZToastUtils.init(mContext);
+        ZToastUtils.toast(getString(resId));
     }
 
     //-------------------------一下方法为内部使用-----------------------------

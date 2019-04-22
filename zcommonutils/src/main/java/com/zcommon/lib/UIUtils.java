@@ -168,8 +168,8 @@ public class UIUtils {
      * Causes the Runnable r to be added to the message queue, to be run
      * after the specified amount of time elapses.
      *
-     * @param r The Runnable that will be executed.
-     * @param delayMillis   The delay (in milliseconds) until the Runnable will be executed.
+     * @param r           The Runnable that will be executed.
+     * @param delayMillis The delay (in milliseconds) until the Runnable will be executed.
      * @return
      */
     public static boolean postDelayed(Runnable r, long delayMillis) {
@@ -315,6 +315,28 @@ public class UIUtils {
      */
     public static int px2sp(Context context, final float pxValue) {
         return SizeUtils.px2sp(context, pxValue);
+    }
+
+    /**
+     * 将数字按照4位进行分割.
+     *
+     * @param numText 分割前的文字
+     * @return 分割后的文字.
+     */
+    public static String makeInterval(String numText) {
+        if (numText == null || numText.length() == 0) {
+            return "";
+        }
+        StringBuilder sb = new StringBuilder(numText);
+        int length = numText.length() / 4 + numText.length();
+
+        for (int i = 0; i < length; i++) {
+            if (i % 5 == 0) {
+                sb.insert(i, " ");
+            }
+        }
+        sb.deleteCharAt(0);
+        return sb.toString();
     }
 
 //<<<-------------------------完全静态方法,无需初始化init-----------------------

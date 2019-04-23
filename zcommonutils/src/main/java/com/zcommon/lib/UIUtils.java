@@ -3,11 +3,14 @@ package com.zcommon.lib;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DimenRes;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.text.TextUtils;
@@ -337,6 +340,18 @@ public class UIUtils {
         }
         sb.deleteCharAt(0);
         return sb.toString();
+    }
+
+    /**
+     * 根据view创建bitmap.
+     *
+     * @param view
+     * @return
+     */
+    public static Bitmap createBitmap(View view) {
+        final Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
+        view.draw(new Canvas(bitmap));
+        return bitmap;
     }
 
 //<<<-------------------------完全静态方法,无需初始化init-----------------------

@@ -3,6 +3,8 @@ package com.zcommon.lib;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -10,6 +12,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
@@ -17,6 +21,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.IBinder;
 import android.os.StatFs;
+import android.provider.MediaStore;
 import android.provider.Settings;
 import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
@@ -35,6 +40,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -51,6 +57,43 @@ public class SystemUtils {
     public static boolean isRoot = false;
 
     private SystemUtils() {
+    }
+
+    /**
+     * 保存bitmap到系统相册.需要在子线程执行.
+     *
+     * @param cr
+     * @param bitmap
+     * @param title
+     * @param description
+     * @return
+     */
+    public static String insertImage(ContentResolver cr, Bitmap bitmap, String title, String description) {
+        ContentValues values = new ContentValues();
+        values.put(MediaStore.Images.Media.TITLE, title);
+        values.put(MediaStore.Images.Media.DESCRIPTION, description);
+        values.put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg");
+        values.put(MediaStore.Images.Media.DATE_ADDED, System.currentTimeMillis());
+        values.put(MediaStore.Images.Media.DATE_MODIFIED, System.currentTimeMillis());
+        values.put(MediaStore.Images.Media.DATE_TAKEN, System.currentTimeMillis());
+        Uri url = null;
+        String stringUrl = null;
+        try {
+            url = cr.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, values);
+            if (bitmap != null) {
+                OutputStream imageOut = cr.openOutputStream(url);
+                try {
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, imageOut);
+                } finally {
+                    imageOut.close();
+                }
+            }
+        } catch (Exception e) {
+        }
+        if (url != null) {
+            stringUrl = url.toString();
+        }
+        return stringUrl;
     }
 
     /**
@@ -1049,18 +1092,6 @@ public class SystemUtils {
             }
         }
         return null;
-    }
-
-    /**
-     * sp转为px
-     *
-     * @param context 上下文
-     * @param spValue 值
-     * @return 转换后px值.
-     */
-    public static float sp2px(Context context, float spValue) {
-        final float scale = context.getResources().getDisplayMetrics().scaledDensity;
-        return spValue * scale;
     }
 
 }

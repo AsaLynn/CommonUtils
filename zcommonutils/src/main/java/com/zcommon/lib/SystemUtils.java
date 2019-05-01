@@ -236,6 +236,11 @@ public class SystemUtils {
         }
     }
 
+    /**
+     * SDK_INT
+     *
+     * @return SDK_INT
+     */
     public static int getSdkVersionInt() {
         try {
             return Build.VERSION.SDK_INT;
@@ -365,6 +370,12 @@ public class SystemUtils {
         return availableStorage >= size;
     }
 
+    /**
+     * 获取版本号.
+     *
+     * @param context
+     * @return
+     */
     public static int getVersionCode(Context context) {
         if (versionCode != 0) {
             return versionCode;
@@ -424,6 +435,8 @@ public class SystemUtils {
     }
 
     /**
+     * 获取换粗目录.
+     *
      * @param context context
      * @return cache dir. Can be null is external storage is unmounted
      */
@@ -437,6 +450,12 @@ public class SystemUtils {
         }
     }
 
+    /**
+     * 获取版本名称.
+     *
+     * @param context context
+     * @return 版本名称
+     */
     public static String getVersionName(Context context) {
         if (versionName == null) {
             PackageInfo packageInfo = getPackageInfo(context, context.getPackageName(), 0);

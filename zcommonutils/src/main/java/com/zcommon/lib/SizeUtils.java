@@ -11,6 +11,7 @@ public class SizeUtils {
     /**
      * dp转px
      *
+     * @param context context
      * @param dpValue dp值
      * @return px值
      */
@@ -22,6 +23,7 @@ public class SizeUtils {
     /**
      * px转dp
      *
+     * @param context context
      * @param pxValue px值
      * @return dp值
      */
@@ -33,6 +35,7 @@ public class SizeUtils {
     /**
      * sp转px
      *
+     * @param context context
      * @param spValue sp值
      * @return px值
      */
@@ -44,6 +47,7 @@ public class SizeUtils {
     /**
      * px转sp
      *
+     * @param context context
      * @param pxValue px值
      * @return sp值
      */

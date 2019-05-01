@@ -42,7 +42,8 @@ public class TVUtil {
      *
      * @param textView     控件.
      * @param resId        图片资源id.
-     * @param width,height 指定图片的宽高,单位:px.
+     * @param width 指定图片的宽,单位:px.
+     * @param height 指定图片的高,单位:px.
      */
     public static void drawableLeft(TextView textView, @DrawableRes int resId, int width, int height) {
         Drawable drawable = getDrawable(textView, resId, width, height);

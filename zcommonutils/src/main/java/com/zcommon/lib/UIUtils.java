@@ -1,5 +1,7 @@
 package com.zcommon.lib;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.res.Resources;
@@ -352,6 +354,18 @@ public class UIUtils {
         final Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
         view.draw(new Canvas(bitmap));
         return bitmap;
+    }
+
+    /**
+     * Sets the current primary clip on the clipboard.  This is the clip that
+     * is involved in normal cut and paste operations.
+     *
+     * @param context  context
+     * @param copeText copeText The clipped data item to set.
+     */
+    public static void setPrimaryClip(Context context, String copeText) {
+        ClipboardManager cmb = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+        cmb.setPrimaryClip(ClipData.newPlainText(null, copeText));
     }
 
 //<<<-------------------------完全静态方法,无需初始化init-----------------------

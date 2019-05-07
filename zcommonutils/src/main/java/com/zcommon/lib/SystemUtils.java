@@ -124,10 +124,21 @@ public class SystemUtils {
     }
 
 
+    /**
+     * 判断当前sdk版本是否大于等于指定的sdk版本.
+     *
+     * @param sdkInt sdk版本.
+     * @return boolean
+     */
     public static boolean aboveApiLevel(int sdkInt) {
         return getApiLevel() >= sdkInt;
     }
 
+    /**
+     * sdk版本.
+     *
+     * @return
+     */
     public static int getApiLevel() {
         return Build.VERSION.SDK_INT;
     }
@@ -518,56 +529,6 @@ public class SystemUtils {
         } else {
             return true;
         }
-    }
-
-
-    public static int getScreenHeight(WindowManager windowManager) {
-        int heightPixels = 0;
-        Display defaultDisplay = windowManager.getDefaultDisplay();
-        if (aboveApiLevel(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-                && !aboveApiLevel(Build.VERSION_CODES.JELLY_BEAN_MR1)) {
-            try {
-                heightPixels = (Integer) Display.class.getMethod("getRawHeight").invoke(defaultDisplay);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else if (aboveApiLevel(Build.VERSION_CODES.JELLY_BEAN_MR1)) {
-            android.graphics.Point realSize = new android.graphics.Point();
-            defaultDisplay.getRealSize(realSize);
-            heightPixels = realSize.y;
-        } else {
-            DisplayMetrics metrics = new DisplayMetrics();
-            defaultDisplay.getMetrics(metrics);
-            heightPixels = metrics.heightPixels;
-        }
-        return heightPixels;
-    }
-
-    public static int getScreenWidth(WindowManager windowManager) {
-        int widthPixels = 0;
-        Display defaultDisplay = windowManager.getDefaultDisplay();
-        if (aboveApiLevel(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-                && !aboveApiLevel(Build.VERSION_CODES.JELLY_BEAN_MR1)) {
-            try {
-                widthPixels = (Integer) Display.class.getMethod("getRawWidth").invoke(defaultDisplay);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else if (aboveApiLevel(Build.VERSION_CODES.JELLY_BEAN_MR1)) {
-            android.graphics.Point realSize = new android.graphics.Point();
-            defaultDisplay.getRealSize(realSize);
-            widthPixels = realSize.x;
-        } else {
-            DisplayMetrics metrics = new DisplayMetrics();
-            defaultDisplay.getMetrics(metrics);
-            widthPixels = metrics.widthPixels;
-        }
-        return widthPixels;
-    }
-
-    public static int getScreenWidth(Context context) {
-        WindowManager wmManager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
-        return getScreenWidth(wmManager);
     }
 
     @TargetApi(Build.VERSION_CODES.FROYO)

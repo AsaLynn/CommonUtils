@@ -1,6 +1,23 @@
 package com.zcommon.lib;
 
-public class TextNumUtils {
+import android.text.TextUtils;
+
+public class NumUtils {
+
+    /**
+     * 隐藏手机号码中间四位.
+     *
+     * @param phoneNumber 手机号.
+     * @return 137****1676
+     */
+    public static String hidePhoneNum(String phoneNumber) {
+        if (TextUtils.isEmpty(phoneNumber)) {
+            phoneNumber = "";
+            return phoneNumber;
+        }
+        phoneNumber = phoneNumber.replaceAll("(\\d{3})\\d{4}(\\d{4})", "$1****$2");
+        return phoneNumber;
+    }
 
     /**
      * 将数字按照4位进行分割.

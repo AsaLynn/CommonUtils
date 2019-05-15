@@ -5,6 +5,25 @@ import android.text.TextUtils;
 public class NumUtils {
 
     /**
+     * 隐藏20位的银行卡号的中间12位,并从左到右进行4位一分割
+     * {"(\\d{4})(\\d{12})(\\d{3})"}-->保留前四位,保留后三位,中间12位替换为*
+     * {$1************$3}-->替换格式.
+     *
+     * @param cardNumber 19位的银行卡号.
+     * @return xxxx****xxxx
+     */
+    public static String hideCardNum(String cardNumber) {
+        if (cardNumber == null || cardNumber.length() == 0) {
+            return "";
+        }
+        if (cardNumber.trim().length() == 19) {
+            cardNumber = cardNumber.trim().replaceAll("(\\d{4})(\\d{12})(\\d{3})", "$1************$3");
+            cardNumber = makeInterval(cardNumber);
+        }
+        return cardNumber;
+    }
+
+    /**
      * 隐藏手机号码中间四位.
      *
      * @param phoneNumber 手机号.

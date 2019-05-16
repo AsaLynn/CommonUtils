@@ -7,6 +7,7 @@ import android.net.Uri;
 /**
  * 常用系统Intent的封装.
  * https://blog.csdn.net/lovoo/article/details/51757030
+ * https://www.jb51.net/article/122754.htm
  * Created by zxn on 2019/5/16.
  */
 public class SystemIntent {

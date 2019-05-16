@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import java.util.List;
 
 /**
+ * 常规校验的工具类.
  * Created by zxn on 2019/3/28.
  */
 public class Preconditions {

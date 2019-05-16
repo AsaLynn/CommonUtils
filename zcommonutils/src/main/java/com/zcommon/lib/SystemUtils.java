@@ -51,7 +51,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class SystemUtils {
-    public static final String TAG = "SystemUtils";
+    public static final String TAG = SystemUtils.class.getSimpleName();
     private static String versionName = null;
     private static int versionCode = 0;
     public static boolean isRoot = false;
@@ -773,24 +773,6 @@ public class SystemUtils {
             default:
                 return "xxhdpi";
         }
-    }
-
-    /**
-     * @param context context
-     * @param px      context
-     * @return context
-     */
-    public static float px2dp(final Context context, final float px) {
-        return px / context.getResources().getDisplayMetrics().density;
-    }
-
-    /**
-     * @param context context
-     * @param dp      dp
-     * @return float
-     */
-    public static float dp2px(final Context context, final float dp) {
-        return dp * context.getResources().getDisplayMetrics().density;
     }
 
     /**

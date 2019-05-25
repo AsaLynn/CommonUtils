@@ -52,11 +52,22 @@ import java.util.Locale;
 
 public class SystemUtils {
     public static final String TAG = SystemUtils.class.getSimpleName();
-    private static String versionName = null;
-    private static int versionCode = 0;
+    //    private static String versionName = null;
+//    private static int versionCode = 0;
     public static boolean isRoot = false;
 
     private SystemUtils() {
+    }
+
+    public static String getPackageName(Context context) {
+        String packageName = "";
+        try {
+            PackageInfo packageInfo = SystemUtils.getPackageInfo(context, context.getPackageName(), 0);
+            packageName = packageInfo.packageName;
+        } catch (Exception e) {
+        }
+        return packageName;
+
     }
 
     /**
@@ -388,9 +399,10 @@ public class SystemUtils {
      * @return
      */
     public static int getVersionCode(Context context) {
-        if (versionCode != 0) {
-            return versionCode;
-        }
+//        if (versionCode != 0) {
+//            return versionCode;
+//        }
+        int versionCode = 0;
         PackageInfo packageInfo;
         try {
             packageInfo = context.getPackageManager().getPackageInfo(
@@ -402,7 +414,7 @@ public class SystemUtils {
         } catch (RuntimeException e) {
             e.printStackTrace();
         }
-        return 0;
+        return versionCode;
     }
 
     public static String getNonNullModel() {
@@ -468,14 +480,10 @@ public class SystemUtils {
      * @return 版本名称
      */
     public static String getVersionName(Context context) {
-        if (versionName == null) {
-            PackageInfo packageInfo = getPackageInfo(context, context.getPackageName(), 0);
-            if (packageInfo != null) {
-                versionName = packageInfo.versionName;
-            } else {
-                versionName = "";
-            }
-
+        String versionName = "";
+        PackageInfo packageInfo = getPackageInfo(context, context.getPackageName(), 0);
+        if (packageInfo != null) {
+            versionName = packageInfo.versionName;
         }
         return versionName;
     }

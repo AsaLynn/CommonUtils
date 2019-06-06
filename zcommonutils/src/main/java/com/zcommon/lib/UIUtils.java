@@ -86,10 +86,11 @@ public class UIUtils {
         return mContext.getString(resId);
     }
 
+    //&#12288;"门&#12288;&#12288;店:"
     /**
-     * &#12288;代表一个字宽度空格.
+     * 代表一个字宽度空格.
      *
-     * @param text "门&#12288;&#12288;店:"
+     * @param text
      * @return 带空格的字符串.BLANK
      */
     public static String getBlankString(String text) {

@@ -15,6 +15,7 @@ import android.support.annotation.DimenRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.text.Html;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -82,6 +83,16 @@ public class UIUtils {
     public static String getString(@StringRes int resId) {
         isNull();
         return mContext.getString(resId);
+    }
+
+    /**
+     * &#12288;代表一个字宽度空格.
+     *
+     * @param text "门&#12288;&#12288;店:"
+     * @return 带空格的字符串.
+     */
+    public static String getBlankString(String text) {
+        return Html.fromHtml(text).toString();
     }
 
     public static void toast(String msg) {

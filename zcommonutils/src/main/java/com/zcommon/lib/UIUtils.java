@@ -30,6 +30,7 @@ import android.widget.Toast;
  */
 public class UIUtils {
 
+    public static String BLANK = "&#12288;";
     //-------------------------以下方法需初始化init----------------------------->>>
     private static Context mContext;
 
@@ -89,7 +90,7 @@ public class UIUtils {
      * &#12288;代表一个字宽度空格.
      *
      * @param text "门&#12288;&#12288;店:"
-     * @return 带空格的字符串.
+     * @return 带空格的字符串.BLANK
      */
     public static String getBlankString(String text) {
         return Html.fromHtml(text).toString();

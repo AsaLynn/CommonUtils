@@ -9,9 +9,9 @@
 
     <TextView
         android:id="@+id/iv_image"
-        android:drawableBottom="@color/c_ffffff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:drawableBottom="@color/c_ffffff"
         android:gravity="center_horizontal"
         android:text="TextView" />
 
@@ -20,6 +20,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Button" />
+
+    <EditText
+        android:id="@+id/et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:hint="123456"
+        android:textSize="@dimen/sp_14" />
 
 
 </LinearLayout>

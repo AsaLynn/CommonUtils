@@ -29,6 +29,7 @@ import android.widget.Toast;
  * Created by zxn on 2019/3/6.
  */
 public class UIUtils {
+    public static final String RMB = "¥";
 
     public static String BLANK = "&#12288;";
     //-------------------------以下方法需初始化init----------------------------->>>

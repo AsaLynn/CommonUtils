@@ -2,7 +2,27 @@ package com.zcommon.lib;
 
 import android.text.TextUtils;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+
 public class NumUtils {
+
+    /**
+     * 四舍五入保留两位小数点(整数在后面补.00)
+     * numberToTextByTwo
+     *
+     * @param num 需要处理的数
+     * @return
+     */
+    public static String formatByTwo(double num) {
+        try {
+            // 防止不是中文
+            DecimalFormat format = new DecimalFormat("0.00");
+            return format.format(new BigDecimal(num));
+        } catch (Exception e) {
+        }
+        return "0.00";
+    }
 
     /**
      * 隐藏20位的银行卡号的中间12位,并从左到右进行4位一分割

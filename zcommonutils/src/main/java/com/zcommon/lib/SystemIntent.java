@@ -12,6 +12,16 @@ import android.net.Uri;
  */
 public class SystemIntent {
 
+
+    public static void jumpToCall(Context context,String tel) {
+        try {
+            Uri uri = Uri.parse("tel:" + tel);
+            Intent intent = new Intent(Intent.ACTION_CALL, uri);
+            context.startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     /**
      * 将应用退到桌面上,保留自身
      *

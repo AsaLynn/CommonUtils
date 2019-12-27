@@ -1,1 +1,1 @@
-include ':app', ':zcommonutils'
+include ':app', ':common-utils'

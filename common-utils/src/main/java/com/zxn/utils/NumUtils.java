@@ -8,6 +8,25 @@ import java.text.DecimalFormat;
 public class NumUtils {
 
     /**
+     * 隐藏20位的银行卡号的前面的12位,并从左到右进行4位一分割
+     * (d{16})(d{3}):保留后三位,前面的12位替换为*
+     * ****************$2:替换格式.
+     *
+     * @param cardNumber 19位的银行卡号.
+     * @return xxxx****xxxx
+     */
+    public static String hideFrontalCardNum(String cardNumber) {
+        if (cardNumber == null || cardNumber.length() == 0) {
+            return "";
+        }
+        if (cardNumber.trim().length() == 19) {
+            cardNumber = cardNumber.trim().replaceAll("(\\d{16})(\\d{3})", "****************$2");
+            cardNumber = makeInterval(cardNumber);
+        }
+        return cardNumber;
+    }
+
+    /**
      * 四舍五入保留两位小数点(整数在后面补.00)
      * numberToTextByTwo
      *

@@ -6,5 +6,5 @@ android中常用的系统工具类
 implementation 'com.zcommon.lib:zcommonutils:1.3.3'
 
 //最新版本.
-implementation 'com.zxn.utils.common-utils:1.3.5'
+implementation 'com.zxn.utils:common-utils:1.3.5'
 ```

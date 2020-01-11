@@ -3,8 +3,8 @@ package com.zxn.utils;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
-import android.support.annotation.ColorInt;
-import android.support.annotation.Size;
+import androidx.annotation.ColorInt;
+import androidx.annotation.Size;
 
 /**
  * Created by zxn on 2019/7/11.

@@ -3,12 +3,6 @@ package com.zxn.utils;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-/**
- * Purpose:
- * 
- * @see
- * @since 1.1.0
- */
 public class Md5Utils {
 	private   final static char HEX_DIGITS[] = { '0', '1', '2', '3', '4', '5',
 			'6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };

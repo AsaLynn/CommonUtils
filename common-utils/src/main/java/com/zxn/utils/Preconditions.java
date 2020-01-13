@@ -175,22 +175,10 @@ public class Preconditions {
         return builder.toString();
     }
 
-    /**
-     * 判断list数据是否为空
-     *
-     * @param list
-     * @return true：list为空
-     */
     public static boolean isEmpty(List list) {
         return list == null || list.isEmpty();
     }
 
-    /**
-     * 判断list数据是否不为空
-     *
-     * @param list
-     * @return true：list不为空
-     */
     public static boolean isNotEmpty(List list) {
         return list != null && list.size() > 0;
     }

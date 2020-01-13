@@ -31,7 +31,7 @@ public class NumUtils {
      * numberToTextByTwo
      *
      * @param num 需要处理的数
-     * @return
+     * @return  String
      */
     public static String formatByTwo(double num) {
         try {

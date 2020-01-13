@@ -3,15 +3,19 @@ package com.zxn.utils;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+
 import androidx.annotation.ColorRes;
 import androidx.annotation.DimenRes;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
+import androidx.annotation.ArrayRes;
+import androidx.annotation.IntegerRes;
 import android.text.Html;
 import android.util.DisplayMetrics;
 import android.view.Display;
@@ -36,6 +40,28 @@ public class UIUtils {
      */
     public static void init(Context context) {
         mContext = context;
+    }
+
+    public static Resources getResources() {
+        isNull();
+        return mContext.getResources();
+    }
+
+    public static int getInteger(@IntegerRes int id) {
+        isNull();
+        return mContext.getResources().getInteger(id);
+    }
+
+    public static int[] getIntArray(@ArrayRes int id) {
+        isNull();
+
+        return mContext.getResources().getIntArray(id);
+    }
+
+    public static String[] getStringArray(@ArrayRes int id) {
+        isNull();
+
+        return mContext.getResources().getStringArray(id);
     }
 
     /**
@@ -82,6 +108,7 @@ public class UIUtils {
     }
 
     //&#12288;"门&#12288;&#12288;店:"
+
     /**
      * 代表一个字宽度空格.
      *
@@ -135,7 +162,7 @@ public class UIUtils {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else if (aboveApiLevel(Build.VERSION_CODES.JELLY_BEAN_MR1)) {
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             android.graphics.Point realSize = new android.graphics.Point();
             defaultDisplay.getRealSize(realSize);
             heightPixels = realSize.y;
@@ -157,18 +184,6 @@ public class UIUtils {
     public static float getDimension(@DimenRes int id) {
         isNull();
         return mContext.getResources().getDimension(id);
-    }
-
-    /**
-     * 获取dimes.xml中dimen的尺寸值。类似于方法
-     * {@link #getDimension}，不同的是返回值是int类型的值
-     *
-     * @param id 资源id。
-     * @return 返回强转成int类型的值。
-     */
-    public int getDimensionPixelOffset(@DimenRes int id) {
-        isNull();
-        return mContext.getResources().getDimensionPixelOffset(id);
     }
 
     /**
@@ -228,10 +243,6 @@ public class UIUtils {
         return mHandler.postDelayed(r, delayMillis);
     }
 
-//<<<-------------------------以下方法需初始化init----------------------------|
-
-//|-------------------------完全静态方法,无需初始化init----------------------->>>
-
     /**
      * 获取color.xml中的颜色
      *
@@ -242,6 +253,10 @@ public class UIUtils {
     public static int getColor(View view, @ColorRes int id) {
         return view.getResources().getColor(id);
     }
+
+//<<<-------------------------以下方法需初始化init----------------------------|
+
+//|-------------------------完全静态方法,无需初始化init----------------------->>>
 
     /**
      * 获取Context
@@ -291,7 +306,7 @@ public class UIUtils {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        } else if (aboveApiLevel(Build.VERSION_CODES.JELLY_BEAN_MR1)) {
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             android.graphics.Point realSize = new android.graphics.Point();
             defaultDisplay.getRealSize(realSize);
             widthPixels = realSize.x;
@@ -418,15 +433,14 @@ public class UIUtils {
         return getApiLevel() >= sdkInt;
     }
 
+    private static int getApiLevel() {
+        return Build.VERSION.SDK_INT;
+    }
+
 //<<<-------------------------完全静态方法,无需初始化init-----------------------
 
 
     //-------------------------一下方法为内部使用----------------------------->>>
-
-
-    private static int getApiLevel() {
-        return Build.VERSION.SDK_INT;
-    }
 
     /**
      * mContext 是否为null.
@@ -435,6 +449,18 @@ public class UIUtils {
         if (null == mContext) {
             throw new RuntimeException("null == mContext,should call init()");
         }
+    }
+
+    /**
+     * 获取dimes.xml中dimen的尺寸值。类似于方法
+     * {@link #getDimension}，不同的是返回值是int类型的值
+     *
+     * @param id 资源id。
+     * @return 返回强转成int类型的值。
+     */
+    public int getDimensionPixelOffset(@DimenRes int id) {
+        isNull();
+        return mContext.getResources().getDimensionPixelOffset(id);
     }
 
 //<<<-------------------------方法为内部使用-----------------------------|

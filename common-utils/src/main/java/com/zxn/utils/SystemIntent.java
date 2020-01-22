@@ -12,8 +12,18 @@ import android.net.Uri;
  */
 public class SystemIntent {
 
+    /**
+     * 退出程序
+     *<uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+     * @param context
+     */
+    public static void exitApp(Context context) {
+        jumpToHome(context);
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(0);
+    }
 
-    public static void jumpToCall(Context context,String tel) {
+    public static void jumpToCall(Context context, String tel) {
         try {
             Uri uri = Uri.parse("tel:" + tel);
             Intent intent = new Intent(Intent.ACTION_CALL, uri);
@@ -22,6 +32,7 @@ public class SystemIntent {
             e.printStackTrace();
         }
     }
+
     /**
      * 将应用退到桌面上,保留自身
      *

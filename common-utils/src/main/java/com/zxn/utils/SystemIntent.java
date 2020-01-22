@@ -14,7 +14,8 @@ public class SystemIntent {
 
     /**
      * 退出程序
-     *<uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+     * uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"
+     *
      * @param context
      */
     public static void exitApp(Context context) {

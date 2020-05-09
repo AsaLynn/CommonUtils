@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zxn.utils" >
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
-
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 </manifest>

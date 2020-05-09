@@ -285,8 +285,8 @@ public class StringUtils {
 	/**
 	 * 银行卡字符串添加空格
 	 * 
-	 * @param source
-	 * @return
+	 * @param source	String
+	 * @return	String
 	 */
 	public static String getBlankString(String source) {
 		StringBuilder stringBuilder = new StringBuilder();

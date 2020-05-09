@@ -1,5 +1,6 @@
 package com.zxn.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -13,6 +14,22 @@ import android.net.Uri;
 public class SystemIntent {
 
     /**
+     * 跳转到拨号页面.
+     *
+     * @param context Context
+     * @param tel     String
+     */
+    public static void jumpToDial(Context context, String tel) {
+        try {
+            Uri uri = Uri.parse("tel:" + tel);
+            Intent intent = new Intent(Intent.ACTION_DIAL, uri);
+            context.startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
      * 退出程序
      * uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"
      *
@@ -24,6 +41,28 @@ public class SystemIntent {
         System.exit(0);
     }
 
+
+    /**
+     * 跳转到拨号页面.
+     *
+     * @param context Context
+     */
+    public static void jumpToCallButton(Context context) {
+        try {
+            Intent intent = new Intent(Intent.ACTION_CALL_BUTTON);
+            context.startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 跳转进行拨打电话.
+     *
+     * @param context Context
+     * @param tel     String
+     */
+    @SuppressLint("MissingPermission")
     public static void jumpToCall(Context context, String tel) {
         try {
             Uri uri = Uri.parse("tel:" + tel);
@@ -46,7 +85,6 @@ public class SystemIntent {
         context.startActivity(intent);
     }
 
-
     /**
      * 打开系统浏览器.
      *
@@ -59,6 +97,4 @@ public class SystemIntent {
         intent.setData(Uri.parse(url));
         context.startActivity(intent);
     }
-
-
 }

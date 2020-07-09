@@ -16,8 +16,8 @@ public class NetUtils {
     public static final int NETWORK_2G = 2; // 2G
     public static final int NETWORK_3G = 3; // 3G
     public static final int NETWORK_4G = 4; // 4G
-    public static final int NETWORK_5G = 4; // 5G
-    public static final int NETWORK_MOBILE = 5; // 手机流量
+    public static final int NETWORK_5G = 5; // 5G
+    public static final int NETWORK_MOBILE = 6; // 手机流量
 
     /**
      * 获取运营商名字

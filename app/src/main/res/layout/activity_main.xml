@@ -56,5 +56,19 @@
         android:paddingBottom="@dimen/dp_10"
         android:text="东方不败" />
 
+    <TextView
+        android:id="@+id/tv_net"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_10"
+        android:drawableBottom="@color/c_ffffff"
+        android:gravity="center"
+        android:paddingLeft="@dimen/dp_20"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_20"
+        android:paddingBottom="@dimen/dp_10"
+        android:text="东方不败" />
+
 
 </LinearLayout>

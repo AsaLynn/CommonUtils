@@ -6,14 +6,14 @@ android中常用的系统工具类
 在dependencies添加依赖然后同步:
 
 ```
-implementation 'com.zcommon.lib:zcommonutils:1.3.8'
-implementation 'com.zcommon.lib:zcommonutils:1.3.3'
 //最新版本.
 implementation 'com.zxn.utils:common-utils:1.4.4'
 implementation 'com.zxn.utils:common-utils:1.3.8'
 implementation 'com.zxn.utils:common-utils:1.3.7'
 implementation 'com.zxn.utils:common-utils:1.3.6'
 implementation 'com.zxn.utils:common-utils:1.3.5'
+implementation 'com.zcommon.lib:zcommonutils:1.3.8'
+implementation 'com.zcommon.lib:zcommonutils:1.3.3'
 ```
 
 ## 打标签

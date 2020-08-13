@@ -6,8 +6,8 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 29
-        versionCode 43
-        versionName "1.4.2"
+        versionCode 45
+        versionName "1.4.4"
     }
 
     buildTypes {
@@ -21,7 +21,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
 }
 
 
@@ -34,7 +34,7 @@ def libName = "common-utils"
 //发布到组织名称名字，必须填写
 group = "com.zxn.utils"
 // 版本号，下次更新是只需要更改版本号即可
-version = "1.4.2"
+version = "1.4.4"
 //上面配置后上传至JCenter后的编译路径是这样的： compile 'com.zxn.utils.common-utils:1.0.0'
 //生成源文件
 task sourcesJar(type: Jar) {

@@ -4,8 +4,44 @@ import android.text.TextUtils;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 public class NumUtils {
+
+    /**
+     * 将小数转为百分数,并保留两位小数点.
+     *
+     * @param number 小数
+     * @return 百分数文字(始终带有两位小数)
+     */
+    public final String formatPercent(double number) {
+        DecimalFormat df = new DecimalFormat("0.00%");
+        return df.format(number);
+    }
+
+    /**
+     * 将小数转为百分数,并保留两位小数点.
+     *
+     * @param number 小数
+     * @return 百分数文字(小数位数不足2位展示1位, 大于等于2位则展示2位)
+     */
+    public static String percent(double number) {
+        return percent(number, 2);
+    }
+
+    /**
+     * 将小数转为百分数
+     *
+     * @param number       小数数值
+     * @param decimalCount 保留的位数
+     * @return
+     */
+    public static String percent(double number, int decimalCount) {
+        NumberFormat format = NumberFormat.getPercentInstance();
+        format.setMaximumFractionDigits(decimalCount);
+        String numberText = format.format(number);
+        return numberText;
+    }
 
     /**
      * 隐藏20位的银行卡号的前面的12位,并从左到右进行4位一分割

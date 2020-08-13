@@ -7,7 +7,7 @@ android中常用的系统工具类
 
 ```
 //最新版本.
-implementation 'com.zxn.utils:common-utils:1.4.5'
+implementation 'com.zxn.utils:common-utils:1.4.6'
 implementation 'com.zxn.utils:common-utils:1.4.4'
 implementation 'com.zxn.utils:common-utils:1.3.8'
 implementation 'com.zxn.utils:common-utils:1.3.7'

@@ -14,7 +14,7 @@ public class NumUtils {
      * @param number 小数
      * @return 百分数文字(始终带有两位小数)
      */
-    public final String formatPercent(double number) {
+    public static String formatPercent(double number) {
         DecimalFormat df = new DecimalFormat("0.00%");
         return df.format(number);
     }

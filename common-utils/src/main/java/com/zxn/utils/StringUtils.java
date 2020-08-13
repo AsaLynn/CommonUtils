@@ -154,7 +154,7 @@ public class StringUtils {
 	/**
 	 * 中文转unicode
 	 * 
-	 * @param str
+	 * @param str str
 	 * @return 反回unicode编码
 	 */
 	public static String chinaToUnicode(String str) {
@@ -167,9 +167,9 @@ public class StringUtils {
 	}
 
 	/**
-	 * unicode转中�?
-	 * 
-	 * @return 中文
+	 * unicode转中
+	 * @param dataStr dataStr
+	 * @return	中文
 	 */
 	public static String unicodeToChinese(String dataStr) {
 
@@ -299,11 +299,11 @@ public class StringUtils {
 		return stringBuilder.toString();
 	}
 	
+
 	/**
 	 * 银行卡字符串添加空格并且前四位后三位显示 中间*号
-	 * 
-	 * @param source
-	 * @return
+	 * @param source	source
+	 * @return String
 	 */
 	public static String getBlankSymbolString(String source) {
 		StringBuilder stringBuilder = new StringBuilder();

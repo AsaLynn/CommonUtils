@@ -10,17 +10,23 @@ import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
 import androidx.annotation.DimenRes;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.annotation.ArrayRes;
 import androidx.annotation.IntegerRes;
+
 import android.text.Html;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 /**
  * 系统UI操作工具类
@@ -433,14 +439,10 @@ public class UIUtils {
         return getApiLevel() >= sdkInt;
     }
 
+
     private static int getApiLevel() {
         return Build.VERSION.SDK_INT;
     }
-
-//<<<-------------------------完全静态方法,无需初始化init-----------------------
-
-
-    //-------------------------一下方法为内部使用----------------------------->>>
 
     /**
      * mContext 是否为null.
@@ -449,6 +451,30 @@ public class UIUtils {
         if (null == mContext) {
             throw new RuntimeException("null == mContext,should call init()");
         }
+    }
+
+    /**
+     * 用于TextView,出现两种颜色的情况.
+     *
+     * @param text        要展示的完整字符串
+     * @param colorId     默认颜色
+     * @param deepColorId 要加深高亮的颜色
+     * @param startIndex  加深色的起始索引
+     * @param endIndex    加深色的结束索引
+     * @return SpannableString
+     */
+    public static SpannableString spannableString(String text, @ColorRes int colorId, @ColorRes int deepColorId, int startIndex, int endIndex) {
+        isNull();
+        SpannableString spannableString = new SpannableString(text);
+        if (startIndex > 1) {
+            spannableString.setSpan(new ForegroundColorSpan(getColor(colorId)), 1, startIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            spannableString.setSpan(new ForegroundColorSpan(getColor(deepColorId)), startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            spannableString.setSpan(new ForegroundColorSpan(getColor(colorId)), endIndex, text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        } else {
+            spannableString.setSpan(new ForegroundColorSpan(getColor(deepColorId)), startIndex, endIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            spannableString.setSpan(new ForegroundColorSpan(getColor(colorId)), endIndex, text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        }
+        return spannableString;
     }
 
     /**
@@ -463,5 +489,4 @@ public class UIUtils {
         return mContext.getResources().getDimensionPixelOffset(id);
     }
 
-//<<<-------------------------方法为内部使用-----------------------------|
 }

@@ -9,15 +9,6 @@ import android.graphics.Canvas;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
-
-import androidx.annotation.ColorInt;
-import androidx.annotation.ColorRes;
-import androidx.annotation.DimenRes;
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
-import androidx.annotation.ArrayRes;
-import androidx.annotation.IntegerRes;
-
 import android.text.Html;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -26,7 +17,13 @@ import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.TextView;
+
+import androidx.annotation.ArrayRes;
+import androidx.annotation.ColorRes;
+import androidx.annotation.DimenRes;
+import androidx.annotation.IntegerRes;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 
 /**
  * 系统UI操作工具类
@@ -118,7 +115,7 @@ public class UIUtils {
     /**
      * 代表一个字宽度空格.
      *
-     * @param text
+     * @param text 内容
      * @return 带空格的字符串.BLANK
      */
     public static String getBlankString(String text) {
@@ -242,7 +239,7 @@ public class UIUtils {
      *
      * @param r           The Runnable that will be executed.
      * @param delayMillis The delay (in milliseconds) until the Runnable will be executed.
-     * @return
+     * @return true:执行成功
      */
     public static boolean postDelayed(Runnable r, long delayMillis) {
         Handler mHandler = new Handler(Looper.getMainLooper());
@@ -300,7 +297,7 @@ public class UIUtils {
      * 获取屏幕的宽度。
      *
      * @param windowManager 窗口管理者。
-     * @return
+     * @return 宽度
      */
     public static int getScreenWidth(WindowManager windowManager) {
         int widthPixels = 0;
@@ -329,7 +326,7 @@ public class UIUtils {
      * {@link #getDimension}，不同的是返回值是int类型的值
      *
      * @param id 资源id。
-     * @return
+     * @return 尺寸值
      * @see #getDimension
      * @see #getDimensionPixelOffset
      */
@@ -352,6 +349,7 @@ public class UIUtils {
     /**
      * dp转px
      *
+     * @param context Context
      * @param dpValue dp值
      * @return px值
      */
@@ -362,6 +360,7 @@ public class UIUtils {
     /**
      * px转dp
      *
+     * @param context Context
      * @param pxValue px值
      * @return dp值
      */
@@ -372,6 +371,7 @@ public class UIUtils {
     /**
      * sp转px
      *
+     * @param context Context
      * @param spValue sp值
      * @return px值
      */
@@ -382,6 +382,7 @@ public class UIUtils {
     /**
      * px转sp
      *
+     * @param context Context
      * @param pxValue px值
      * @return sp值
      */
@@ -414,8 +415,8 @@ public class UIUtils {
     /**
      * 根据view创建bitmap.
      *
-     * @param view
-     * @return
+     * @param view  View
+     * @return  Bitmap
      */
     public static Bitmap createBitmap(View view) {
         final Bitmap bitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);

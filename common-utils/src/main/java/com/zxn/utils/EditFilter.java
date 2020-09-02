@@ -102,11 +102,10 @@ public class EditFilter {
 
     }
 
-
     /**
      * 整型数字开头为0  输入其他时0自动删除   在EditText监听中调取此方法即可
-     *
-     * @param editText
+     * @param editText  EditText
+     * @param editable  Editable
      */
     public static void onAfterTextChanged(final EditText editText, Editable editable) {
         if (TextUtils.isEmpty(editable.toString())) {

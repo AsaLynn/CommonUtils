@@ -33,7 +33,7 @@ public class SystemIntent {
      * 退出程序
      * uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"
      *
-     * @param context
+     * @param context   Context
      */
     public static void exitApp(Context context) {
         jumpToHome(context);
@@ -76,7 +76,7 @@ public class SystemIntent {
     /**
      * 将应用退到桌面上,保留自身
      *
-     * @param context
+     * @param context Context
      */
     public static void jumpToHome(Context context) {
         Intent intent = new Intent(Intent.ACTION_MAIN);

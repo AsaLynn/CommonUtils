@@ -34,7 +34,7 @@ public class NumUtils {
      *
      * @param number       小数数值
      * @param decimalCount 保留的位数
-     * @return
+     * @return  百分数
      */
     public static String percent(double number, int decimalCount) {
         NumberFormat format = NumberFormat.getPercentInstance();

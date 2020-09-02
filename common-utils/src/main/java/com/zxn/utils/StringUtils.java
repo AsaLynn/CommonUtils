@@ -21,8 +21,8 @@ public class StringUtils {
     /**
      * 字符转浮点
      *
-     * @param str
-     * @return
+     * @param str 数字值
+     * @return 浮点数值
      */
     public static Float StringToFloat(String str) {
         if (str == null || "".equals(str) || "null".equals(str) || "Null".equals(str) || "NULL".equals(str)) {
@@ -34,8 +34,8 @@ public class StringUtils {
     /**
      * 字符转浮点
      *
-     * @param str
-     * @return
+     * @param str 数字值
+     * @return 整数数值
      */
     public static int StringToInt(String str) {
         if (str == null || "".equals(str) || "null".equals(str) || "Null".equals(str) || "NULL".equals(str)) {
@@ -47,8 +47,8 @@ public class StringUtils {
     /**
      * 判断手机号码是否正确
      *
-     * @param mobiles
-     * @return
+     * @param mobiles 手机号
+     * @return true:手机号
      */
     public static boolean isMobileNO(String mobiles) {
         Pattern p = Pattern.compile("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$");
@@ -59,6 +59,9 @@ public class StringUtils {
 
     /**
      * 判断密码是否是数字和字母
+     *
+     * @param pwd 密码内容
+     * @return true:是,
      */
     public static boolean isPwd(String pwd) {
         Pattern p = Pattern.compile("^(?=.*\\d.*)(?=.*[a-zA-Z].*).{6,}$");
@@ -320,8 +323,8 @@ public class StringUtils {
     /**
      * 保留两位小数
      *
-     * @param num
-     * @return
+     * @param num Double
+     * @return 两位小数
      */
     public static String getNumberFormat(Double num) {
         return new DecimalFormat("0.00").format(num == null ? 0 : num);

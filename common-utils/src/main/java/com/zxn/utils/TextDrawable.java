@@ -17,6 +17,8 @@ public class TextDrawable extends Drawable {
 
     protected String mText;
     protected int mColor;
+    protected Paint mPaint;
+    protected Rect mTextBound;
 
     public TextDrawable() {
         super();
@@ -24,6 +26,7 @@ public class TextDrawable extends Drawable {
         this.mPaint.setStrokeWidth(3);
         this.mTextBound = new Rect();
     }
+
 
     public TextDrawable(String text, int color, int textSize) {
         this.mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -38,10 +41,11 @@ public class TextDrawable extends Drawable {
     /**
      * 创建一个TextDrawable
      *
+     * @param context  Context
      * @param text     展示的文字
      * @param colorId  文字颜色
      * @param textSize 字体大小,单位sp.
-     * @return Drawable
+     * @return Drawable图片
      */
     public static TextDrawable create(Context context, String text, int colorId, int textSize) {
         TextDrawable drawable = new TextDrawable();
@@ -52,13 +56,11 @@ public class TextDrawable extends Drawable {
         return drawable;
     }
 
-
     public void setText(String text) {
         this.mText = text;
         this.mPaint.getTextBounds(text, 0, text.length(), mTextBound);
         invalidateSelf();
     }
-
 
     public void setColor(int color) {
         this.mColor = color;
@@ -70,10 +72,6 @@ public class TextDrawable extends Drawable {
         this.mPaint.setTextSize(textSize);
         invalidateSelf();
     }
-
-    protected Paint mPaint;
-    protected Rect mTextBound;
-
 
     @Override
     public void draw(Canvas canvas) {

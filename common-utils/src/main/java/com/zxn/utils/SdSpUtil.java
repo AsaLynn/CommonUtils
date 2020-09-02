@@ -35,9 +35,9 @@ public class SdSpUtil {
     /**
      * 保存数据到文件
      *
-     * @param context
-     * @param key
-     * @param data
+     * @param context context
+     * @param key     key
+     * @param data    data
      */
     public static void saveData(Context context, String key, Object data) {
         try {
@@ -83,10 +83,10 @@ public class SdSpUtil {
     /**
      * 从文件中读取数据
      *
-     * @param context
-     * @param key
-     * @param defValue
-     * @return
+     * @param context  Context
+     * @param key      键
+     * @param defValue 默认值
+     * @return Object
      */
     public static Object getData(Context context, String key, Object defValue) {
         try {
@@ -132,9 +132,9 @@ public class SdSpUtil {
      * 初始化数据到文件
      * 有就跳过，没有就新增
      *
-     * @param context
-     * @param key
-     * @param data
+     * @param context Context
+     * @param key     key
+     * @param data    data
      */
     public static void initialData(Context context, String key, Object data) {
         try {

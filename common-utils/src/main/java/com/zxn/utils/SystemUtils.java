@@ -53,6 +53,15 @@ import java.util.Properties;
 
 public class SystemUtils {
     public static final String TAG = SystemUtils.class.getSimpleName();
+    public static final String SYS_EMUI = "sys_emui";
+    public static final String SYS_MIUI = "sys_miui";
+    public static final String SYS_FLYME = "sys_flyme";
+    private static final String KEY_MIUI_VERSION_CODE = "ro.miui.ui.version.code";
+    private static final String KEY_MIUI_VERSION_NAME = "ro.miui.ui.version.name";
+    private static final String KEY_MIUI_INTERNAL_STORAGE = "ro.miui.internal.storage";
+    private static final String KEY_EMUI_API_LEVEL = "ro.build.hw_emui_api_level";
+    private static final String KEY_EMUI_VERSION = "ro.build.version.emui";
+    private static final String KEY_EMUI_CONFIG_HW_SYS_VERSION = "ro.confg.hw_systemversion";
     public static boolean isRoot = false;
 
     private SystemUtils() {
@@ -72,11 +81,11 @@ public class SystemUtils {
     /**
      * 保存bitmap到系统相册.需要在子线程执行.
      *
-     * @param cr
-     * @param bitmap
-     * @param title
-     * @param description
-     * @return
+     * @param cr ContentResolver
+     * @param bitmap    bitmap
+     * @param title title
+     * @param description   description
+     * @return  保存路径
      */
     public static String insertImage(ContentResolver cr, Bitmap bitmap, String title, String description) {
         ContentValues values = new ContentValues();
@@ -133,7 +142,6 @@ public class SystemUtils {
         imm.showSoftInput(view, InputMethodManager.SHOW_FORCED);
     }
 
-
     /**
      * 判断当前sdk版本是否大于等于指定的sdk版本.
      *
@@ -147,7 +155,7 @@ public class SystemUtils {
     /**
      * sdk版本.
      *
-     * @return
+     * @return  版本号
      */
     public static int getApiLevel() {
         return Build.VERSION.SDK_INT;
@@ -394,8 +402,8 @@ public class SystemUtils {
     /**
      * 获取版本号.
      *
-     * @param context
-     * @return
+     * @param context Context
+     * @return 版本号
      */
     public static int getVersionCode(Context context) {
 //        if (versionCode != 0) {
@@ -663,11 +671,6 @@ public class SystemUtils {
         return outBuffer.toString();
     }
 
-
-    public enum InstallOption {
-        AUTO, EXTERNAL, INTERNAL, ERROR
-    }
-
     /**
      * check if the mobile has been rooted
      *
@@ -817,6 +820,37 @@ public class SystemUtils {
         }
     }
 
+
+//更新系统媒体库
+//    public static void updateMediaHub(final Context context, final String filePath) {
+//        try {
+//            Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+//            intent.setData(Uri.fromFile(new File(filePath)));
+//            context.sendBroadcast(intent);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        BaseLibApp.poolExecute(new Runnable() {
+//            @Override
+//            public void run() {
+//                MediaScannerConnection.scanFile(context,
+//                        new String[]{filePath}, null,
+//                        new MediaScannerConnection.OnScanCompletedListener() {
+//                            public void onScanCompleted(String path, Uri uri) {
+//                                L.e("onScanCompleted-->" + path);
+//                            }
+//                        });
+//            }
+//        });
+//    }
+
+    /**
+     * 是否安装
+     * @param context   Context
+     * @param packageName   包名
+     * @return true:成功,
+     */
     public static boolean isAppInstalled(Context context, String packageName) {
         PackageManager pm = context.getPackageManager();
         try {
@@ -935,35 +969,6 @@ public class SystemUtils {
         }
         return IPAddress;
     }
-
-    /**
-     * 更新系统媒体库
-     *
-     * @param context
-     * @param filePath
-     */
-//    public static void updateMediaHub(final Context context, final String filePath) {
-//        try {
-//            Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-//            intent.setData(Uri.fromFile(new File(filePath)));
-//            context.sendBroadcast(intent);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//        BaseLibApp.poolExecute(new Runnable() {
-//            @Override
-//            public void run() {
-//                MediaScannerConnection.scanFile(context,
-//                        new String[]{filePath}, null,
-//                        new MediaScannerConnection.OnScanCompletedListener() {
-//                            public void onScanCompleted(String path, Uri uri) {
-//                                L.e("onScanCompleted-->" + path);
-//                            }
-//                        });
-//            }
-//        });
-//    }
 
     /**
      * 获取系统版本号
@@ -1099,19 +1104,14 @@ public class SystemUtils {
 
     /**
      * 返回手机品牌和型号
-     * @return
+     *
+     * @return 机品牌和型号
      */
     public static String getMobleType() {
         return android.os.Build.BRAND + ":" + Build.MODEL;
     }
-    public static final String SYS_EMUI = "sys_emui";
-    public static final String SYS_MIUI = "sys_miui";
-    public static final String SYS_FLYME = "sys_flyme";
-    private static final String KEY_MIUI_VERSION_CODE = "ro.miui.ui.version.code";
-    private static final String KEY_MIUI_VERSION_NAME = "ro.miui.ui.version.name";
-    private static final String KEY_MIUI_INTERNAL_STORAGE = "ro.miui.internal.storage";
-    private static final String KEY_EMUI_API_LEVEL = "ro.build.hw_emui_api_level";
-    private static final String KEY_EMUI_VERSION = "ro.build.version.emui";
-    private static final String KEY_EMUI_CONFIG_HW_SYS_VERSION = "ro.confg.hw_systemversion";
+    public enum InstallOption {
+        AUTO, EXTERNAL, INTERNAL, ERROR
+    }
 
 }

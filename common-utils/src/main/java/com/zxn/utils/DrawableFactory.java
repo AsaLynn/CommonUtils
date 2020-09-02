@@ -43,7 +43,7 @@ public class DrawableFactory {
      * @param strokeArgb  边框的颜色
      * @param radius      圆角半径
      * @param strokeWidth 边框的粗细
-     * @return
+     * @return  GradientDrawable
      */
     public static GradientDrawable create(@ColorInt int solidArgb, @ColorInt int strokeArgb, float radius, int strokeWidth) {
         GradientDrawable gradientDrawable = new GradientDrawable();

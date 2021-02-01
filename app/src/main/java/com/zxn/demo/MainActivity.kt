@@ -1,6 +1,7 @@
 package com.zxn.demo
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
@@ -16,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        TVUtil.drawableTop(ivImage, R.mipmap.ic_launcher)
+        //TVUtil.drawableTop(ivImage, R.mipmap.ic_launcher)
         SoftKeyBoardManager.setKeyBoardListener(this, object : OnSoftKeyBoardChangeListener {
             override fun keyBoardShow(height: Int) {
                 Toast.makeText(this@MainActivity, "keyBoardShow$height", Toast.LENGTH_SHORT).show()
@@ -27,7 +28,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
         UIUtils.init(this)
-        tvShape1!!.background = create(UIUtils.getColor(R.color.c_ff460d), 10f)
+        /*tvShape1!!.background = create(UIUtils.getColor(R.color.c_ff460d), 10f)
         tvShape2!!.background = create(UIUtils.getColor(R.color.c_ffffff),
                 UIUtils.getColor(R.color.c_ff460d),
                 10f,
@@ -43,7 +44,18 @@ class MainActivity : AppCompatActivity() {
             tvNet!!.text = "4G"
         } else if (networkState == NetUtils.NETWORK_5G) {
             tvNet!!.text = "5G"
+        }*/
+
+        button.setOnClickListener {
+            if (ViewUtils.isTooFastClick()) {
+                Log.i(TAG, "isTooFastClick: ")
+                return@setOnClickListener
+            }
+            Log.i(TAG, "setOnClickListener: ")
         }
     }
 
+    companion object {
+        private const val TAG = "MainActivity"
+    }
 }

@@ -120,16 +120,16 @@ class UIUtils {
             isNull
             return context!!.getString(resId)
         }
-        //&#12288;"门&#12288;&#12288;店:"
-        /**
-         * 代表一个字宽度空格.
-         *
-         * @param text 内容
-         * @return 带空格的字符串.BLANK
-         */
-        fun getBlankString(text: String?): String {
-            return Html.fromHtml(text).toString()
-        }
+//        //&#12288;"门&#12288;&#12288;店:"
+//        /**
+//         * 代表一个字宽度空格.
+//         *
+//         * @param text 内容
+//         * @return 带空格的字符串.BLANK
+//         */
+//        fun getBlankString(text: String?): String {
+//            return Html.fromHtml(text).toString()
+//        }
 
         fun toast(msg: String?) {
             isNull
@@ -436,13 +436,13 @@ class UIUtils {
         }
 
         private val apiLevel: Int
-            private get() = Build.VERSION.SDK_INT
+            get() = Build.VERSION.SDK_INT
 
         /**
          * mContext 是否为null.
          */
         private val isNull: Unit
-            private get() {
+            get() {
                 if (null == context) {
                     throw RuntimeException("null == mContext,should call init()")
                 }

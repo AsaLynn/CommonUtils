@@ -19,7 +19,7 @@ android中常用的系统工具类
 
 ```
 git tag -a 1.4.9 -m '增加日志工具类'
-git push origin v1.4.9
+git push origin 1.4.9
 git tag
 ```
 

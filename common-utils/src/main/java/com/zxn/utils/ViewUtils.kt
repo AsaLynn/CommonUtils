@@ -1,18 +1,5 @@
 package com.zxn.utils
 
-/**
- * Copyright(c) ${}YEAR} ZhuLi co.,Ltd All Rights Reserved.
- *
- * @className: ViewUtils$
- * @description: TODO 类描述
- * @version: v0.0.1
- * @author: zxn < a href=" ">zhangxiaoning@17biyi.com</ a>
- * @date: 2021/2/1$ 11:57$
- * @updateUser: 更新者：
- * @updateDate: 2021/2/1$ 11:57$
- * @updateRemark: 更新说明：
- * @version: 1.0
- * */
 object ViewUtils {
 
     /**

@@ -88,7 +88,7 @@ class TextDrawable : Drawable {
         fun create(context: Context, text: String, colorId: Int, textSize: Int): TextDrawable {
             val drawable = TextDrawable()
             drawable.setText(text)
-            drawable.setColor(UIUtils.getColor(context, colorId))
+            drawable.setColor(context.resources.getColor(colorId))
             drawable.setBounds(0, 0, drawable.minimumWidth, drawable.minimumHeight)
             drawable.setTextSize(SizeUtils.sp2px(context, textSize.toFloat()).toFloat())
             return drawable

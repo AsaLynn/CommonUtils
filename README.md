@@ -7,16 +7,19 @@ android中常用的系统工具类
 
 ```
 //最新版本.
-implementation 'com.zxn.utils:common-utils:1.4.6'
 ```
+
+#### 版本日志
+1.4.9:
+- 库依赖地址变更.
 
 ## 打标签
 
-V1.3.8:
+1.4.9:
 
 ```
-git tag -a v1.3.8 -m 'common-utils:1.3.8-->1,增加退出程序的方法.'
-git push origin v1.3.8
+git tag -a 1.4.9 -m '增加日志工具类'
+git push origin v1.4.9
 git tag
 ```
 

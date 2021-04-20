@@ -10,16 +10,16 @@ android中常用的系统工具类
 ```
 
 #### 版本日志
-1.4.9:
+1.5.0:
 - 库依赖地址变更.
 
 ## 打标签
 
-1.4.9:
+1.5.0:
 
 ```
-git tag -a 1.4.9 -m '增加日志工具类'
-git push origin 1.4.9
+git tag -a 1.5.0 -m 'fix code'
+git push origin 1.5.0
 git tag
 ```
 

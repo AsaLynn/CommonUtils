@@ -18,7 +18,7 @@ android中常用的系统工具类
 1.5.0:
 
 ```
-git tag -a 1.5.0 -m 'fix code'
+git tag -a 1.5.0 -m '完善'
 git push origin 1.5.0
 git tag
 ```
